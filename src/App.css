@@ -6,3 +6,15 @@
   background-color: green;
   margin-left: 10px;
 }
+
+.timeZones_list {
+  list-style-type: none;
+}
+
+.list_item_timeZone {
+  display: flex;
+}
+
+.time, .item_delete_timeZone {
+  margin-left: 5px;
+}

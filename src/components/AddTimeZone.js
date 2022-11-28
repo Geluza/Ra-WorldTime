@@ -1,26 +1,37 @@
-import React from 'react';
-import TimeZoneClass from './TimeZonesClass'
+import React, {useState} from 'react';
 
-class TimeZone extends React.Component{
 
-render() {
-  const {name, timeZone} = this.state;
+function AddForm ({addTimeZone}) {
+  let [name, setName] = useState('');
+  let [timeOffset, setTimeOffset] = useState('')
+ 
+  const changeName = (evt) => {
+    setName(evt.target.value);
+  }
+ 
+  const changeTimeZone = (evt) => {
+    setTimeOffset(evt.target.value);
+  }
+
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    addTimeZone(name, timeOffset);
+    setName('');
+    setTimeOffset('');
+  }
+
+
   return (
-    <div className="add_fields">
+    <form className="add_timeZone" onSubmit={handleSubmit}>
       <label className="add_name">Название</label>
-      <input className="add_name_field" value={name}></input>
-      <label className="add_timeZone">Временная зона</label>
-      <select className="add_timeZone" value={timeZone}>
-      <option value="UTC-4">New York(UTC-4)</option>
-      <option value="UTC+3">Moscow(UTC+3)</option>
-      <option value="UTC+0">London(UTC+0)</option>
-      <option value="UTC+9">Tokyo(UTC+9)</option>
-      </select>
+      <input className="add_name_field" value={name} onChange={changeName}></input>
+      <label className="add_timeZone">Смещение относительно UTC</label>
+      <input className="add_timeZone" type="number" min="-12" max ="14" value={timeOffset} onChange={changeTimeZone}>
+      </input>
       <button className="add_btn">Добавить</button>  
-    </div>
+    </form>
   );
 }
 
-}
-
-export default TimeZone;
+export default AddForm;
