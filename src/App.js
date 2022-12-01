@@ -10,37 +10,38 @@ function App() {
   let [items, setItems] = useState([]);
   let [timeLocal, setTimeLocal] = useState('');
 
-    // const localTimeZone = (timeOffset) => {
-   //setTimeLocal(timeLocal = moment().utcOffset(timeOffset).format("HH:mm:ss"));
-   // return timeLocal;
-   //  }
+ const localTimeZone = () => {
+  setTimeLocal(moment())
+ }
 
-    
+useEffect(() => {
+  const timerId = setInterval(localTimeZone, 1000);
+  return function cleanup() {
+    clearInterval(timerId);
+  };
+},[] );
 
   let newItem;
 
   //функция для добавления таймера на страницу
  const addTimeZone = (name, timeOffset) => {
-  setTimeLocal(timeLocal = moment().utcOffset(timeOffset).format("HH:mm:ss"));
-    if(!name) {
+  let findIndex = items.findIndex(itm => itm.itemId === name)
+  if(findIndex >= 0) {
+     alert("Часы с таким названием уже существуют!")
+  }
+    else if(!name) {
       alert("Заполните поле Название")
     } else {
     newItem = {
       itemId: name,
       itemName: name,
-      itemTime: timeLocal
+      itemTime: timeLocal.utcOffset(timeOffset*60).format("HH:mm:ss")
     }
     let newItems = [...items, newItem];
     setItems(newItems)
     }  
  }
-  
- useEffect(() => {
-  let timer = setInterval(() => setTimeLocal(timeLocal, 1000))
-   return () => {
-  clearInterval(timer);
- };
-});  
+
 
   return (
     <main className="App">
