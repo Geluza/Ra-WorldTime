@@ -1,22 +1,17 @@
-//import React,{useState, useEffect} from 'react';
-//import moment from 'moment-timezone';
+import Watch from "./Watch";
 
-function TimeZoneItem({item}) {
+export default function TimeZoneItem({item, deleteItem, timeOffset}) {
+   const {itemName, itemId, itemTime} = item;
+  
+   const handleDelete = (event) => {
+     deleteItem(event.target.id);
+   }
 
-return (
-  <li className="list_item_timeZone" >
-  <div className="name_timeZone">{item.itemName}</div>
-  <div className="time">
-  {item.itemTime}
-  </div>
- <button className="item_delete_timeZone">x</button>
-  </li>
-)
+    return (
+        <div className="list_item_timeZone">
+            <div className="name_timeZone">{itemName}</div>
+            <Watch itemTime={itemTime} />
+            <button className="item_delete_timeZone" type='button' id={itemId} onClick={handleDelete}>X</button>
+        </div>
+    );
 }
-
-export default TimeZoneItem;
-
-
-//<span className="item_hour">{item.itemHour}:</span> 
- // <span className="item_min">{item.itemMin}:</span>
- // <span className="item_sec">{item.itemSec}</span>

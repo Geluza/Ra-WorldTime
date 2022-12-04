@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
-
-function AddForm ({addTimeZone}) {
+export default function AddTimeZone ({addTimeZone}) {
   let [name, setName] = useState('');
   let [timeOffset, setTimeOffset] = useState('')
  
@@ -33,5 +32,3 @@ function AddForm ({addTimeZone}) {
     </form>
   );
 }
-
-export default AddForm;

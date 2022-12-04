@@ -13,8 +13,21 @@
 
 .list_item_timeZone {
   display: flex;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .time, .item_delete_timeZone {
   margin-left: 5px;
+}
+
+.name_timeZone {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+
+.time {
+  font-size: 20px;
 }
