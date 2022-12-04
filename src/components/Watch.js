@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment-timezone';
 
-export default function Watch({itemTime}) {
- let [timeZone, setTimeZone] = useState(itemTime);
+export default function Watch({itemOffset}) {
+ let [timeZone, setTimeZone] = useState(itemOffset);
 
   useEffect(() => {
     const timer = setInterval(()=> {

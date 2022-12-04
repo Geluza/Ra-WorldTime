@@ -17,7 +17,8 @@ function TimeZonesWidget() {
           items.push({
             itemId: name,
             itemName: name,
-            itemTime: moment().utcOffset(timeOffset*60).format("HH:mm:ss")
+            itemTime: moment().utcOffset(timeOffset*60).format("HH:mm:ss"),
+            itemOffset: timeOffset
           })
           setItems([...items])
           }  
